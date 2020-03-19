@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: super-basic
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://39.101.202.67:3306/super_basic?useUnicode=true&characterEncoding=utf-8&useSSL=false&autoReconnect=true&failOverReadOnly=false}
+    username: ${SPRING_DATASOURCE_USERNAME:super}
+    password: ${SPRING_DATASOURCE_PASSWORD:super@123}
+
+mybatis:
+  mapperLocations:
+    - classpath*:/mapper/*Mapper.xml
+    - classpath*:/mapper/*/*Mapper.xml
