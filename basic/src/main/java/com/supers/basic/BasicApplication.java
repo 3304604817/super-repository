@@ -1,10 +1,11 @@
 package com.supers.basic;
 
+import tk.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(scanBasePackages = {"com.supers.basic"})
+@MapperScan("com.super.basic.domain.entity")
 public class BasicApplication {
 
 	public static void main(String[] args) {

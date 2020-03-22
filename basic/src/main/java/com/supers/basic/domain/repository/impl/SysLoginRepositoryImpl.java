@@ -15,6 +15,7 @@ public class SysLoginRepositoryImpl implements SysLoginRepository {
 
     @Override
     public List<SysLogin> listLogin(){
-        return sysLoginMapper.listLogin();
+//        return sysLoginMapper.listLogin();
+        return sysLoginMapper.selectAll();
     }
 }

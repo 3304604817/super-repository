@@ -1,13 +1,13 @@
 package com.supers.basic.mapper;
 
 import com.supers.basic.domain.entity.SysLogin;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
+import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-@Mapper
+@org.apache.ibatis.annotations.Mapper
 @Component
-public interface SysLoginMapper {
+public interface SysLoginMapper extends Mapper<SysLogin> {
     List<SysLogin> listLogin();
 }
