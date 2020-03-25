@@ -10,8 +10,8 @@
             <el-submenu index="1">
               <template slot="title"><i class="el-icon-user"></i>个人信息</template>
               <el-menu-item-group>
-                <el-menu-item index="1-1">登录维护</el-menu-item>
-                <el-menu-item index="1-2">信息维护</el-menu-item>
+                <el-menu-item @click.native="click_1_1(editableTabsValue)" index="1-1" >登录维护</el-menu-item>
+                <el-menu-item @click.native="click_1_2()" index="1-2">信息维护</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
             <el-submenu index="2">
@@ -41,18 +41,18 @@
         </el-aside>
 
         <el-main>
-          <el-table :data="tableData">
-            <el-table-column prop="date" label="日期" width="140">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120">
-            </el-table-column>
-            <el-table-column prop="address" label="地址">
-            </el-table-column>
-          </el-table>
+          <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="removeTab">
+            <el-tab-pane
+              v-for="(item) in editableTabs"
+              :key="item.name"
+              :label="item.title"
+              :name="item.name"
+            >
+              {{item.content}}
+            </el-tab-pane>
+          </el-tabs>
         </el-main>
       </el-container>
-      <el-footer>
-      </el-footer>
     </el-container>
   </div>
 </template>
@@ -78,13 +78,40 @@
 <script>
 export default {
   data () {
-    const item = {
-      date: '2016-05-02',
-      name: '王小虎',
-      address: '上海市普陀区金沙江路 1518 弄'
-    }
     return {
-      tableData: Array(1).fill(item)
+      editableTabsValue: '0',
+      editableTabs: [],
+      tabIndex: 0
+    }
+  },
+  methods: {
+    removeTab (targetName) {
+      let tabs = this.editableTabs
+      let activeName = this.editableTabsValue
+      if (activeName === targetName) {
+        tabs.forEach((tab, index) => {
+          if (tab.name === targetName) {
+            let nextTab = tabs[index + 1] || tabs[index - 1]
+            if (nextTab) {
+              activeName = nextTab.name
+            }
+          }
+        })
+      }
+      this.editableTabsValue = activeName
+      this.editableTabs = tabs.filter(tab => tab.name !== targetName)
+    },
+    click_1_1 () {
+      let newTabName = ++this.tabIndex + ''
+      this.editableTabs.push({
+        title: '登录信息维护',
+        name: newTabName,
+        content: 'New Tab content'
+      })
+      this.editableTabsValue = newTabName
+    },
+    click_1_2 () {
+      console.log('1_2')
     }
   }
 }

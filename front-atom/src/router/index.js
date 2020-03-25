@@ -15,15 +15,27 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
-    {
-      path: '/menu',
-      name: 'Menu',
-      component: Menu
-    },
+    // {
+    //   path: '/menu',
+    //   name: 'Menu',
+    //   component: Menu
+    // },
     {
       path: '/test',
       name: 'Test',
       component: Test
+    },
+    {
+      path: '/menu',
+      name: 'Menu',
+      component: Menu
+      // children: [
+      //   {
+      //     path: '/login/index',
+      //     name: 'Login',
+      //     component: Login
+      //   }
+      // ]
     },
     {
       path: '/login/index',

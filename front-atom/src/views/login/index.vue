@@ -9,7 +9,7 @@
         </el-col>
         <el-col :span="5">
           <el-form-item label="性别">
-            <el-select v-model="formInline.sex" placeholder="性别">
+            <el-select v-model="formInline.userSex" placeholder="性别">
               <el-option label="男" value="man"></el-option>
               <el-option label="女" value="woman"></el-option>
             </el-select>
@@ -48,7 +48,7 @@ export default {
     return {
       formInline: {
         userName: '',
-        sex: '',
+        userSex: '',
         userLevel: ''
       }
     }
