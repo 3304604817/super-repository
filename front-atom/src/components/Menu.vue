@@ -1,9 +1,10 @@
 <template>
   <div>
-    <el-container>
+    <el-container style="height: 500px">
       <el-header>
+        Atom Log
       </el-header>
-      <el-container style="height: 100%; border: 1px">
+      <el-container style="height: 500px">
         <el-aside style="width: 15%;">
           <el-menu>
             <el-submenu index="1">
