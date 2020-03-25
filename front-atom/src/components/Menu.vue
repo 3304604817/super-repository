@@ -105,7 +105,7 @@ export default {
       let newTabName = ++this.tabIndex + ''
       this.editableTabs.push({
         title: '登录信息维护',
-        name: newTabName,
+        name: '/login/index',
         content: 'New Tab content'
       })
       this.editableTabsValue = newTabName
