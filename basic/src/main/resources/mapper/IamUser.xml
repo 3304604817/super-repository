@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.supers.basic.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.supers.basic.domain.entity.IamUser">
+        <result column="id" property="id" jdbcType="DECIMAL"/>
+        <result column="login_name" property="loginName" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="organization_id" property="organizationId" jdbcType="DECIMAL"/>
+        <result column="HASH_PASSWORD" property="hashPassword" jdbcType="VARCHAR"/>
+        <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="INTERNATIONAL_TEL_CODE" property="internationalTelCode" jdbcType="VARCHAR"/>
+        <result column="language" property="language" jdbcType="VARCHAR"/>
+        <result column="time_zone" property="timeZone" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="list" parameterType="com.supers.basic.domain.entity.IamUser" resultMap="BaseResultMap">
+        select iu.id,
+        iu.login_name,
+        iu.email,
+        iu.organization_id,
+        iu.HASH_PASSWORD,
+        iu.real_name,
+        iu.phone,
+        iu.INTERNATIONAL_TEL_CODE,
+        iu.language,
+        iu.time_zone
+        from iam_user iu
+        where 1 = 1
+        <if test="null != realName and '' != realName">
+            iu.real_name like concat('%', concat(#{realName, jdbcType = VARCHAR}, '%'))
+        </if>
+    </select>
+</mapper>
