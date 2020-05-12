@@ -4,6 +4,17 @@ import lombok.Data;
 
 @Data
 public class IamUser {
+    public static final String FIELD_ID = "id";
+    public static final String FIELD_LOGIN = "loginName";
+    public static final String FIELD_EMAIL = "email";
+    public static final String FIELD_ORGANIZATION_ID = "organizationId";
+    public static final String FIELD_HASH_PASSWORD = "hashPassword";
+    public static final String FIELD_REAL_NAME = "realName";
+    public static final String FIELD_PHONE = "phone";
+    public static final String FIELD_INTERNATIONAL_TEL_CODE = "internationalTelCode";
+    public static final String FIELD_LANGUAGE = "language";
+    public static final String FIELD_TIME_ZONE = "timeZone";
+
     private Long id;
 
     private String loginName;

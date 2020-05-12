@@ -1,6 +1,5 @@
 package com.supers.basic.controller;
 
-import org.apache.ibatis.annotations.Results;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
