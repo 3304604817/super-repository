@@ -1,9 +1,10 @@
 package com.supers.basic.domain.entity;
 
+import com.supers.basic.domain.base.BaseEntity;
 import lombok.Data;
 
 @Data
-public class IamUser {
+public class IamUser extends BaseEntity {
     public static final String FIELD_ID = "id";
     public static final String FIELD_LOGIN = "loginName";
     public static final String FIELD_EMAIL = "email";
