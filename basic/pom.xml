@@ -11,6 +11,7 @@
 	<groupId>com.supers</groupId>
 	<artifactId>basic</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>basic</name>
 	<description>Supers project for Spring Boot</description>
 
@@ -19,6 +20,12 @@
 	</properties>
 
 	<dependencies>
+		<!--maven打包所需的依赖-->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
