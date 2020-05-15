@@ -31,6 +31,11 @@ public class RedisHelper {
         return redisTemplate.opsForValue().get(key);
     }
 
+    /**
+     * 批量获取获取Redis缓存
+     * @param keys
+     * @return
+     */
     public final Map<String, Object> batchGetCatch(final String... keys){
         this.logger.info("开始批量获取获取Redis缓存 keys: '" + keys + "'");
         Map<String, Object> redisMap = new HashMap<>();
