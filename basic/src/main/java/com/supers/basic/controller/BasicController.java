@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.xml.ws.soap.Addressing;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/basic")
@@ -19,9 +20,20 @@ public class BasicController {
 
     @GetMapping("/hello")
     public ResponseEntity hello(@RequestParam(value = "name", defaultValue = "Basic") String name) {
+        System.out.println("hello");
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @GetMapping("/cache")
+    public ResponseEntity redisCache(@RequestParam(value = "name", defaultValue = "Basic") String name) {
         System.out.println("GetMapping");
-        redisHelper.setCache("redis", "Object");
-        System.out.println(redisHelper.getCatch("redis"));
+        redisHelper.setCache("1", "1");
+        redisHelper.setCache("2", "2");
+        redisHelper.setCache("3", "3");
+        redisHelper.setCache("4", "4");
+        redisHelper.setCache("5", "5");
+        Map<String, Object> redisMap = redisHelper.batchGetCatch("1", "2", "3", "4", "5");
+        redisHelper.batchDelCache("1", "2", "3", "4", "5");
         return new ResponseEntity(HttpStatus.OK);
     }
 }

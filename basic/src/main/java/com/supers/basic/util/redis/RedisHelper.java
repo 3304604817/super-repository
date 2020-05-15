@@ -6,6 +6,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Redis操作工具类
@@ -23,9 +26,18 @@ public class RedisHelper {
      * @param key
      * @return
      */
-    public final Object getCatch(final Object key){
+    public final Object getCatch(final String key){
         this.logger.info("开始获取Redis缓存 key: '" + key + "'");
         return redisTemplate.opsForValue().get(key);
+    }
+
+    public final Map<String, Object> batchGetCatch(final String... keys){
+        this.logger.info("开始批量获取获取Redis缓存 keys: '" + keys + "'");
+        Map<String, Object> redisMap = new HashMap<>();
+        for(String key:keys){
+            redisMap.put(key, redisTemplate.opsForValue().get(key));
+        }
+        return redisMap;
     }
 
     /**
@@ -67,7 +79,7 @@ public class RedisHelper {
     }
 
     /**
-     * 删除缓存
+     * 删除Redis缓存
      * @param key
      * @return
      */
@@ -79,6 +91,26 @@ public class RedisHelper {
             result = true;
         } catch (Exception e) {
             this.logger.error("删除Redis缓存失败");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * 批量删除Redis缓存
+     * @param keys
+     * @return
+     */
+    public final boolean batchDelCache(final String... keys) {
+        boolean result = false;
+        try {
+            this.logger.info("开始批量删除Redis缓存 keys: '" + keys + "'");
+            for(String key:keys){
+                redisTemplate.delete(key);
+            }
+            result = true;
+        } catch (Exception e) {
+            this.logger.error("批量删除Redis缓存出错");
             e.printStackTrace();
         }
         return result;
