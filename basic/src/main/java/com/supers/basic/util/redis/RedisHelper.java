@@ -6,7 +6,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
